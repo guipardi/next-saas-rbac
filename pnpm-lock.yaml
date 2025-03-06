@@ -15,13 +15,13 @@ importers:
   config/eslint-config:
     devDependencies:
       '@rocketseat/eslint-config':
-        specifier: ^2.2.2
+        specifier: 2.2.2
         version: 2.2.2(eslint@8.57.1)(typescript@5.8.2)
       '@saas/prettier':
         specifier: workspace:*
         version: link:../prettier
       eslint-plugin-simple-import-sort:
-        specifier: ^12.1.1
+        specifier: 12.1.1
         version: 12.1.1(eslint@8.57.1)
 
   config/prettier:
@@ -34,6 +34,18 @@ importers:
         version: 0.6.11(prettier@3.5.2)
 
   config/typescript-config: {}
+
+  packages/auth:
+    devDependencies:
+      '@saas/eslint-config':
+        specifier: workspace:*
+        version: link:../../config/eslint-config
+      '@saas/prettier':
+        specifier: workspace:*
+        version: link:../../config/prettier
+      '@saas/tsconfig':
+        specifier: workspace:*
+        version: link:../../config/typescript-config
 
 packages:
 
