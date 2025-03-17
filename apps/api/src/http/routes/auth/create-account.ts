@@ -16,6 +16,11 @@ export async function createAccount(app: FastifyInstance) {
           email: z.string().email(),
           password: z.string().min(6),
         }),
+        response: {
+          400: z.object({
+            message: z.string(),
+          }),
+        },
       },
     },
     async (request, reply) => {
@@ -28,7 +33,9 @@ export async function createAccount(app: FastifyInstance) {
       })
 
       if (userWithSameEmail) {
-        return reply.status(400).send('User with same e-mail already exists')
+        return reply
+          .status(400)
+          .send({ message: 'User with same e-mail already exists' })
       }
 
       const [, domain] = email.split('@')
